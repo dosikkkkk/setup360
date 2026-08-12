@@ -92,7 +92,7 @@
 </head>
 <body>
 
-<div class="label" id="t">VIP 1</div>
+<div class="label" id="t">HALL</div>
 
 <div id="viewer"></div>
 
@@ -100,14 +100,14 @@
 
 <script>
 const scenes = {
+    hall:       { title: "Hall",        panorama: "hall.jpeg",       yaw: 0, pitch: 0 },
+    konference: { title: "Konference",  panorama: "konference.jpeg", yaw: 0, pitch: 0 },
     vip1:       { title: "VIP 1",       panorama: "vip1.jpeg",       yaw: 0, pitch: 0 },
     vip2:       { title: "VIP 2",       panorama: "vip2.jpeg",       yaw: 0, pitch: 0 },
     vip3:       { title: "VIP 3",       panorama: "vip3.jpeg",       yaw: 0, pitch: 0 },
     tokyo:      { title: "Tokyo",       panorama: "tokyo.jpeg",      yaw: 0, pitch: 0 },
     paris:      { title: "Paris",       panorama: "paris.jpeg",      yaw: 0, pitch: 0 },
-    newyork:    { title: "New York",    panorama: "new-york.jpeg",   yaw: 0, pitch: 0 },
-    konference: { title: "Konference",  panorama: "konference.jpeg", yaw: 0, pitch: 0 },
-    hall:       { title: "Hall",        panorama: "hall.jpeg",       yaw: 0, pitch: 0 }
+    newyork:    { title: "New York",    panorama: "new-york.jpeg",   yaw: 0, pitch: 0 }
 };
 
 // На ПК ставим больший угол обзора (немного отдалено),
@@ -119,7 +119,7 @@ const maxHfov = isDesktop ? 130 : 120;
 // Сразу грузим первую сцену при открытии страницы
 const viewer = pannellum.viewer('viewer', {
     default: {
-        firstScene: 'vip1',
+        firstScene: 'hall',
         sceneFadeDuration: 800,
         autoLoad: true,
         hfov: defaultHfov,
@@ -146,7 +146,7 @@ function setActive(btn) {
 for (const key in scenes) {
     const btn = document.createElement('button');
     btn.textContent = scenes[key].title;
-    if (key === 'vip1') btn.classList.add('active');
+    if (key === 'hall') btn.classList.add('active');
     btn.onclick = () => {
         viewer.loadScene(key);
         t.textContent = scenes[key].title.toUpperCase();
